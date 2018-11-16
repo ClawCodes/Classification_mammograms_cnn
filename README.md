@@ -154,6 +154,6 @@ Missed EDA.
 
 ![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/graphs_images/path_common_mass.png)
 
-It would be interesting to training the network on the provided cropped images as it seems that learning the shapes of problematic masses could potentially lead to a better rate of classification.
+It would be interesting to train the network on the provided cropped images as it seems that learning the shapes of problematic masses could potentially lead to a better rate of classification.
 
 After tuning the simple CNN, I would like to move on to Transfer learning. In the paper provided the researchers used GoogLeNet (inception v1). I would like to move to transfer learning with inception v3 in Keras.
