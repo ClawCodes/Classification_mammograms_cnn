@@ -13,7 +13,7 @@ Each of these files are accompanied with a csv specific to each Image file. The 
 
 Please note that these images were plotted with matplotlib's default colormap and they are actually grayscale.
 
-![](/Users/christopherlawton/galvanize/module_2/capstone_2/proposal/full_cc_mlo_roi.png)
+![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/proposal/full_cc_mlo_roi.png)
 
 ## Goal:
 In my prior work experience, I worked on a project with a goal of assessing the link between breast density and an increased risk in developing breast cancer. The current literature suggests that dense breasts can be 6 times more likely to develop cancer. SO, in this projects I hope to classify mammograms as benign or malignant. To do this, I decided to create a simple Convolution Neural Network (CNN). For this model, I will only be using the CC view as that is the view my prior project was using and it would capture over all breast density. Additionally, to keep computation time down, I will only be using the Mass images not the Calcification images.
@@ -35,9 +35,9 @@ Count| |
 Benign| 852
 Malignant| 740
 
-![](/Users/christopherlawton/galvanize/module_2/capstone_2/graphs_images/path_image_view.png)
+![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/graphs_images/path_image_view.png)
 
-![](/Users/christopherlawton/galvanize/module_2/capstone_2/graphs_images/breast_density_pathology.png)
+![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/graphs_images/breast_density_pathology.png)
 
 Although the above plot does not show a big difference in pathology between density values, I decided to move forward due to my domain knowledge, and the fact that the density values range from 1-4. Currently there is no consensus on how to measure breast density, so these values are a subjective number given to each image by a radiologist.
 
@@ -47,11 +47,11 @@ All images are in the standard medical imaging format, DICOM (Digital Imaging an
 
 Structure of the each file:
 
-<p align="center"> <img src='/Users/christopherlawton/galvanize/module_2/capstone_2/data_challenges/Screen Shot 2018-11-15 at 6.16.50 PM.png' width = "60%">
+<p align="center"> <img src=https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/data_challenges/Screen%20Shot%202018-11-15%20at%206.16.50%20PM.png width = "60%">
 
 Note that each image is 3 directories deep from the parent and primarily named the same. In order to identify what these images actually contain, I used a python library called pydicom [https://pydicom.github.io/](https://pydicom.github.io/). When reading in an image with pydicom you can access the meta data and image as attributes.
 
-![](/Users/christopherlawton/galvanize/module_2/capstone_2/data_challenges/dicom_meta_data.png)
+![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/data_challenges/dicom_meta_data.png)
 
 ###### Notable attributes:
 
@@ -67,9 +67,9 @@ As I stated above, to build the simple CNN, I will only be focusing on the Mass 
 To use flow_from_directory in Keras, I will need the CC views from the test and train folders split into my own train, test, and hold out sets along with the pathology (diagnosis) of each image. Initially I thought the pathology would be accessible via the meta data, however, I found pathology was only available via the provided csvs. My first approach to giving each image its respective diagnosis was to walk through the directories, access the meta data and put it into a dataframe. From there I would map the patient IDs in the provided csv to the patient IDs I abstracted. However, when I did this, I found the dataframes to be of different lengths. It was difficult to find the exact reason as to why this was the case, but I speculate that it is due to the abnormality id column. In most cases there is a single abnormality per image, but in some cases there are more. Each patient seemed to have two images each, one CC and one MLO, and they can have multiple abnormalities for a single image. My next approach was to get the unique patients where abnormality ID == 1. But, that didn't work either, it seemed there are some images that don't start with and abnormality ID == 1, however this could represent duplicate images. After attempting several other methods, I finally found a string of numbers (patient UID) in the image path column in the csv that corresponded to a field in the meta data of each DICOM image. With this information, I walked through each directory with os.walk, matched the ID, view, and UID. I saved each image as a grayscale png and sent the images into a train and test folder and into their respective pathology folders, Benign or Malignant. I then further divided them into train, test, and hold out folders using a 70%(train), 20%(test), and 10%(hold) split.
 
 Original csv structure:
-![](/Users/christopherlawton/galvanize/module_2/capstone_2/data_challenges/csv_sample_mass.png)
+![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/data_challenges/csv_sample_mass.png)
 
-![](/Users/christopherlawton/galvanize/module_2/capstone_2/data_challenges/csv_sample_mass_multiple_abnorm.png)
+![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/data_challenges/csv_sample_mass_multiple_abnorm.png)
 
 Final Mass CC images:
 
@@ -90,10 +90,10 @@ Again, this data was initially to large to put on my local machine, so I conduct
 Choosing the right image size.
 
 ##### (50x50)
-![](/Users/christopherlawton/galvanize/module_2/capstone_2/graphs_images/img_50_compare.png)
+![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/graphs_images/img_50_compare.png)
 
 ##### (150x150)
-![](/Users/christopherlawton/galvanize/module_2/capstone_2/graphs_images/img_150_compare.png)
+![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/graphs_images/img_150_compare.png)
 
 I chose 150x150 for the image input size into my model as it was one of the smaller scales that I felt the density of a breast could potentially be measured.
 
@@ -104,9 +104,9 @@ I based my initial architecture for the CNN on the paper mentioned above. This i
 
 Training my first model showed no learning through 7 epochs with a batch size of 60. The model remained around an accuracy of 0.55 and a loss of roughly 0.69. Note the y axis on both plots, these are essentially straight lines.
 
-![](/Users/christopherlawton/galvanize/module_2/capstone_2/graphs_images/basic_model_accuracy.png)
+![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/graphs_images/basic_model_accuracy.png)
 
-![](/Users/christopherlawton/galvanize/module_2/capstone_2/graphs_images/basic_model_loss.png)
+![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/graphs_images/basic_model_loss.png)
 
 From here I tested various hyperparameters: batch_size, activation functions, kernel initializers, number of epochs, optimizers, learning rates, image augmentation (rotation, shifting, flipping), dropout, etc. However, no combination seemed to improve the metrics.
 
@@ -115,22 +115,22 @@ Unfortunately, the processing required for these models is large and my computer
 The final architecture follows:
 
 
-![](/Users/christopherlawton/galvanize/module_2/capstone_2/graphs_images/final_model.png)
+![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/graphs_images/final_model.png)
 
 The kernel and pool size remained the same, (3x3) and (2x2) respectively. A dense and activation layer was added as well as glorot normal kernel initialization in each conv2d and dense layer. This was recommended from the paper stated above. Training this final model showed the following. Again, note the y axis. There is no significant improvement in accuracy or loss.
 
-![](/Users/christopherlawton/galvanize/module_2/capstone_2/graphs_images/final_model_train_val_accuracy.png)
+![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/graphs_images/final_model_train_val_accuracy.png)
 
-![](/Users/christopherlawton/galvanize/module_2/capstone_2/graphs_images/final_model_train_val_loss.png)
+![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/graphs_images/final_model_train_val_loss.png)
 
 # Visualizing convolution feature maps
 Since the model did not seem to train well, I wanted to see what the feature maps held. Unfortunately, there were no easily interpretable patters. I would expect a feature map to find the edge of a breast, a general mass shape, or possibly a pattern in breast density, however, these feature maps do not display much interpretability of the model.
 
 2nd Convolution layer
-![](/Users/christopherlawton/galvanize/module_2/capstone_2/graphs_images/stitched_filters_4x4_conv2d_2.png)
+![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/graphs_images/stitched_filters_4x4_conv2d_2.png)
 
 3rd Convolution layer
-![](/Users/christopherlawton/galvanize/module_2/capstone_2/graphs_images/stitched_filters_4x4_conv2d_3.png)
+![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/graphs_images/stitched_filters_4x4_conv2d_3.png)
 
 # Results
 
@@ -152,7 +152,7 @@ Train the network using higher resolution images. Potentially crop the images so
 
 Missed EDA.
 
-![](/Users/christopherlawton/galvanize/module_2/capstone_2/graphs_images/path_common_mass.png)
+![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/graphs_images/path_common_mass.png)
 
 It would be interesting to training the network on the provided cropped images as it seems that learning the shapes of problematic masses could potentially lead to a better rate of classification.
 
