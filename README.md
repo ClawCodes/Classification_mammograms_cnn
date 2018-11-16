@@ -82,7 +82,7 @@ Final Mass CC images:
 
 742 total images
 
-# More Data struggles
+# More data struggles
 Again, this data was initially to large to put on my local machine, so I conducted all the file transfer and conversion on the hard drive. When it came time to model, my data stream would break. After some sleuthing, I found several corrupted images that were created from the file transfer. I was able to clear some space to get the images onto my local machine and from there I complete the transfer again. This time, it seemed that all images were intact.
 
 
