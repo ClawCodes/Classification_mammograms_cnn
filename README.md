@@ -73,8 +73,8 @@ Original csv structure:
 
 Final Mass CC images:
 
-| Benign   |Malignant|
-|---|---|---|---|
+| | Benign   |Malignant|
+|---|---|---|
  | Train|  277 | 243|
  |Test | 79  | 69|
  | Hold out | 40  | 34|
