@@ -16,7 +16,7 @@ Please note that these images were plotted with matplotlib's default colormap an
 ![](https://github.com/Clawton92/Classification_mammograms_cnn/blob/master/proposal/full_cc_mlo_roi.png)
 
 ## Goal:
-In my prior work experience, I worked on a project with a goal of assessing the link between breast density and an increased risk in developing breast cancer. The current literature suggests that dense breasts can be 6 times more likely to develop cancer. SO, in this projects I hope to classify mammograms as benign or malignant. To do this, I decided to create a simple Convolution Neural Network (CNN). For this model, I will only be using the CC view as that is the view my prior project was using and it would capture over all breast density. Additionally, to keep computation time down, I will only be using the Mass images not the Calcification images.
+In my prior work experience, I worked on a project with a goal of assessing the link between breast density and an increased risk in developing breast cancer. The current literature suggests that dense breasts can be 6 times more likely to develop cancer. So, in this projects I hope to classify mammograms as benign or malignant. To do this, I decided to create a simple Convolution Neural Network (CNN). For this model, I will only be using the CC view as that is the view my prior project was using and it would capture over all breast density. Additionally, to keep computation time down, I will only be using the Mass images not the Calcification images.
 
 
 Basic Convolutional Neural Net architecture with a binary output. [Source](https://www.researchgate.net/figure/Illustration-of-Convolutional-Neural-Network-CNN-Architecture_fig3_322477802)
