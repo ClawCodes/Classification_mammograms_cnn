@@ -21,7 +21,7 @@ In my prior work experience, I worked on a project with a goal of assessing the 
 
 Basic Convolutional Neural Net architecture with a binary output. [Source](https://www.researchgate.net/figure/Illustration-of-Convolutional-Neural-Network-CNN-Architecture_fig3_322477802)
 
-![](https://www.researchgate.net/figure/Illustration-of-Convolutional-Neural-Network-CNN-Architecture_fig3_322477802)
+![](https://www.researchgate.net/profile/Qianzhou_Du2/publication/322477802/figure/fig3/AS:582461356511232@1515881017676/Illustration-of-Convolutional-Neural-Network-CNN-Architecture.png)
 
 The Neural net is based off of a paper that also classified mammograms as Benign or Malignant [https://arxiv.org/pdf/1612.00542.pdf](https://arxiv.org/pdf/1612.00542.pdf).
 
